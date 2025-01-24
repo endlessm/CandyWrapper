@@ -29,7 +29,7 @@ _Unconventionality:_ When a player or enemy reaches the right or left edge of th
 
 In addition to being a neat, fun, unconventional little game, this project aims to provide an arena for introductory Godot & Git learning experiences.
 
-The game permits creation of Extra Worlds alongside the main game. A World is a sequence of levels that exists in parallel to the original game. When starting the game, player can choose to play the original headline game, or to play one of these extra worlds. We envision a great many extra worlds being added to the game.
+The game permits creation of Extra Worlds alongside the main game. A World is a sequence of levels that exists in parallel to the original game. When starting the game, the player can choose to play the original headline game, or to play one of these extra worlds. We envision a great many extra worlds being added to the game.
 
 World & Level creation is intended to be as simple as possible. We wish to enable the creation of these extra worlds without having to read or write any code. Level creation is done by using Godot [TileMapLayer](https://docs.godotengine.org/en/stable/classes/class_tilemaplayer.html), meaning that levels can be created by drag-and-drop usage of TileMaps. Some supporting code is used to automatically convert the player and enemy tiles to dynamic objects that carry out the functions of the game. We strive to make level & world creation as easy as possible and would generally be opposed to game engine changes that increase the difficulty for a future novice contributor to create their own world.
 

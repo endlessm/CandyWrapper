@@ -4,9 +4,15 @@ First, choose a name for your new world. This should be as descriptive and creat
 
 Copy the `Worlds/Sample` folder to `Worlds/Flying Cow Party`. You can do this from Godot's FileSystem view by right clicking on `Sample` and selecting `Duplicate`. Run the game: you should see “Flying Cow Party” in the world selection menu.
 
-Now, you can adapt the existing sample levels and add new ones within `Worlds/Flying Cow Party`. The levels will be sequenced through a case-insensitive, natural order sorting of their filenames. In other words, if you maintain the naming scheme of `1.tscn`, `2.tscn`, `3.tscn` and so on, the levels will play in this order.
+Now, you can adapt the existing sample levels and add new ones within `Worlds/Flying Cow Party`. Only the scene files that start with a number in the filename are considered levels, and a natural order sorting is applied to their filenames. In other words, if you maintain the naming scheme of `1.tscn`, `2.tscn`, `3.tscn` and so on, the levels will play in this order.
 
-Each level should be a numbered scene file, with a single `TileMapLayer` node. Each level should have the player tile in exactly one cell, and one or more “goober” tiles. When the level is played, they will be replaced with the player and goober scenes, offset horizontally by half a tile.
+Each level should be a numbered scene file, with the following node structure:
+
+- Level (Type: Level)
+  - Map (Type: TilemapLayer)
+  - Goobers (Type: Node2D)
+
+The easiest way to create levels is by painting tiles. Select the Map node. The TileMap panel will open at the bottom. Each level should have the player tile in one cell, and one or more “goober” tiles. When the level is played, they will be replaced with the player and goober scenes, offset horizontally by half a tile.
 
 The first level in the sequence (typically `0.tscn`) is treated as the start screen. This level is treated specially by the game: the player cannot move, and pressing Jump starts the game proper. Similarly, the final level (typically `999.tscn`) is treated as the end screen.
 
@@ -36,7 +42,7 @@ Now your customised start, end and level progression screens will be used in you
 
 3. Open the first level in your world in the Editor's 2D view.
 
-4. Select the `TileMapLayer` from the Scene Dock. In the Inspector, locate the `Tile Set` option under `TileMapLayer`.
+4. Select the `Map` node from the Scene Dock. In the Inspector, locate the `Tile Set` option under `TileMapLayer`.
 
 5. Click the ⌄ there and select `Save As`. Save the resultant `TileSet.tres` in your world's folder.
 
@@ -50,7 +56,7 @@ You will also need to apply your customised `TileSet.tres` to all other levels i
 
 1. Open the next level in the Editor's 2D view.
 
-2. Select the `TileMapLayer` from the Scene Dock. In the Inspector, locate the `Tile Set` option under `TileMapLayer`.
+2. Select the `Map` node from the Scene Dock. In the Inspector, locate the `Tile Set` option under `TileMapLayer`.
 
 3. Locate your world's `TileSet.tres` in the FileSystem view.
 
