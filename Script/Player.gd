@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@onready var NodeScene = global.Game
+signal stomped(goober: CharacterBody2D)
+signal died
+
 @onready var NodeSprite := $Sprite2D
 @onready var NodeArea2D := $Area2D
 @onready var NodeAudio := $Audio
@@ -60,10 +62,6 @@ func _physics_process(delta):
 	else:
 		TryLoop("Jump")
 
-func Die():
-	queue_free()
-	NodeScene.Explode(position)
-	NodeScene.Lose()
 
 func Overlap():
 	var hit = false
@@ -76,16 +74,13 @@ func Overlap():
 			var above = position.y - 1 < par.position.y
 			
 			if onFloor or (vel.y < 0.0 and !above):
-				Die()
+				died.emit()
 			else:
 				hit = true
 				jump = Input.is_action_pressed("jump")
 				vel.y = -jumpSpd * (1.0 if jump else 0.6)
 				
-				par.queue_free()
-				NodeScene.Explode(par.position)
-				NodeScene.check = true
-				print("Goober destroyed")
+				stomped.emit(par)
 	return hit
 
 func TryLoop(arg : String):

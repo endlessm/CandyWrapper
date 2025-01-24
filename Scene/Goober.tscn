@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://byheefdx4lxmx"]
 
-[ext_resource type="Script" uid="uid://c5dx3r1l6mwox" path="res://Script/Goober.gd" id="1"]
+[ext_resource type="Script" path="res://Script/Goober.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cn5awui7bqekp" path="res://Image/Goober.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -38,20 +38,22 @@ collision_layer = 4
 script = ExtResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
 texture = ExtResource("2")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("1")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 1)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("2")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
 target_position = Vector2(0, 5)
 collide_with_areas = true
 

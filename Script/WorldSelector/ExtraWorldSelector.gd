@@ -29,7 +29,7 @@ func _ready() -> void:
 	for world in worlds:
 		var button = Button.new()
 		button.text = world
-		button.pressed.connect(_on_world_button_pressed.bind(WORLDS_DIR.path_join(world)))
+		button.pressed.connect(_on_world_button_pressed.bind(WORLDS_DIR.path_join(world).path_join("World.tscn")))
 		ExtraWorldsBox.add_child(button)
 
 

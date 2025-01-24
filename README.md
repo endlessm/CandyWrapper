@@ -6,37 +6,18 @@ Looping arcade platformer game, based on [Candy Wrapper] by [Harmony Honey]
 ![shot2](Image/thumb/2.png)
 ![shot3](Image/thumb/3.png)
 
-## Background
+## About
 
-Endless runs [game-making learning programs](https://www.endlessos.org/game-making) focused on novice through advanced learners ages 13+. We provide opportunities for career-readiness and collaboration within a community of game makers.
+Everlasting Candy is an open source platform game built with [Godot Engine 4.3](https://godotengine.org). It embodies simplicity, it is a little unconventional and includes a touch of harshness with its visual design and gameplay.
 
-[Candy Wrapper] is an openly-licensed game built with Godot 4.3. Its simple nature and expandable design lead us to choose it as the base for programs where learners collaboratively build and maintain a game, onboarding them to a real community experience. With our fork, _Everlasting Candy_, we respect the original Candy Wrapper design while facilitating community-contributed content and design. We hope to foster a lasting community of open source game developers who can continuously improve and expand upon the game while learning new skills and sharpening existing ones.
+Compared to the original [Candy Wrapper], this version has been adapted to permit expansions from aspiring game builders. Contributors can design their own worlds (sequences of levels) and have them included alongside the original headline game. We'll also consider contributions to the game engine and original content provided they maintain the spirit of the project.
 
-## Adding New Worlds
+This project is used within [Endless learning initiatives](https://www.endlessos.org/game-making) which aim to build career-readiness and collaboration skills through game making. We hope to foster a lasting community of open source game developers who can continuously build and improve games while learning new skills and sharpening existing ones. Everlasting Candy acts as an arena for participants to practice basic usage of the Godot Editor, and gain experience in contributing to a community project via Git and GitHub.
 
-Copy the `Worlds/Sample` folder to `Worlds/Your World Name`. Run the game: you
-should see “Your World Name” in the world selection menu.
+## More Info
 
-Now, you can add new numbered levels and edit the existing levels in
-`Worlds/Your World Name`. Each level should be a numbered scene file, with a
-single `TileMapLayer` node. Each level should have the player tile in exactly
-one cell, and one or more “goober” tiles. When the level is played, they will be
-replaced with the player and goober scenes, offset horizontally by half a tile.
-
-The levels with the lowest and highest numbers (`0.tscn` and `999.tscn`
-respectively in the `Sample` world) are treated specially by the game: the
-player cannot move, and pressing Jump starts the game proper.
-
-A core part of the game is that the levels wrap around: if the player or enemies
-move off any of the four sides of the screen, they reappear on the opposite
-side. For this to work correctly, you currently need to manually copy any ledges
-that are at the edge of the tile map to the corresponding position just off the
-other edge of the map. See
-https://github.com/endlessm/everlasting-candy/issues/19 for more details.
-
-## Development
-
-Built with [Godot Engine 4.3](https://godotengine.org)
+* [World Building Guide](doc/WorldBuilding.md)
+* [Game Design Document](doc/GameDesign.md)
 
 ## License & Credits
 
