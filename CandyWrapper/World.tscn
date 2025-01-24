@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl2mvatn1hkiq"]
+
+[ext_resource type="Script" path="res://Script/World.gd" id="1_prt4d"]
+[ext_resource type="AudioStream" uid="uid://7sq3il53l6oa" path="res://Audio/OST.mp3" id="2_swba7"]
+[ext_resource type="PackedScene" uid="uid://ddy88bnd0h5it" path="res://Scene/CandySpawner.tscn" id="2_vsd7d"]
+[ext_resource type="Texture2D" uid="uid://ccxmd1v0nd7wi" path="res://Image/Title.png" id="4_rs0wp"]
+[ext_resource type="AudioStream" uid="uid://bu4rmhfiu1mm5" path="res://Audio/Win.ogg" id="5_qdrvr"]
+[ext_resource type="AudioStream" uid="uid://dgnfi0xvfvhnx" path="res://Audio/Lose.wav" id="6_rs0e0"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_prt4d")
+
+[node name="CandySpawner" parent="." instance=ExtResource("2_vsd7d")]
+
+[node name="Overlay" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+texture = ExtResource("4_rs0wp")
+centered = false
+hframes = 4
+frame = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_swba7")
+autoplay = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Win" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_qdrvr")
+
+[node name="Lose" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_rs0e0")
