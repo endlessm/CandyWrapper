@@ -10,9 +10,16 @@ enum LevelType { NORMAL, TITLE, COMPLETE }
 enum {TILE_WALL = 0, TILE_PLAYER = 1, TILE_GOOBER = 2}
 @onready var Map: TileMapLayer = $Map
 
-var ScenePlayer = load("res://Scene/Player.tscn")
-var SceneGoober = load("res://Scene/Goober.tscn")
-var SceneExplo = load("res://Scene/Explosion.tscn")
+## Any tiles from cell source ID TILE_PLAYER will be replaced by this scene
+## when the level runs. It should be an instance of Player.
+@export var player_scene := preload("res://Scene/Player.tscn")
+
+## Any tiles from cell source ID TILE_GOOBER will be replaced by this scene
+## when the level runs. It should be an instance of Goober.
+@export var goober_scene := preload("res://Scene/Goober.tscn")
+
+## This scene is used when the player or a goober is destroyed.
+@export var explosion_scene := preload("res://Scene/Explosion.tscn")
 
 @onready var NodeGoobers := $Goobers
 
@@ -20,7 +27,7 @@ var check := false
 
 func _ready():
 	if level_type != LevelType.NORMAL:
-		var p = ScenePlayer.instantiate()
+		var p = player_scene.instantiate()
 		p.position = Vector2(72, 85)
 		p.scale.x = -1 if randf() < 0.5 else 1
 		p.set_script(null)
@@ -38,7 +45,7 @@ func MapStart():
 				Map.set_cell(pos, TILE_WALL, atlas)
 			TILE_PLAYER:
 				# Add live player to the scene
-				var inst = ScenePlayer.instantiate()
+				var inst = player_scene.instantiate()
 				inst.position = Map.map_to_local(pos) + Vector2(4, 0)
 				self.add_child(inst)
 				inst.died.connect(_on_died.bind(inst))
@@ -47,7 +54,7 @@ func MapStart():
 				Map.set_cell(pos, -1)
 			TILE_GOOBER:
 				# Add live goober to the scene
-				var inst = SceneGoober.instantiate()
+				var inst = goober_scene.instantiate()
 				inst.position = Map.map_to_local(pos) + Vector2(4, 0)
 				NodeGoobers.add_child(inst)
 				# Remove static goober tile from the tile map
@@ -63,7 +70,7 @@ func _process(_delta: float):
 			win.emit()
 
 func Explode(character: Node2D):
-	var xpl = SceneExplo.instantiate()
+	var xpl = explosion_scene.instantiate()
 	xpl.position = character.position
 	add_child(xpl)
 	character.queue_free()
