@@ -23,11 +23,14 @@ frame = 1
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_pgqpj")
 autoplay = true
+bus = &"Music"
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_aa7p7")
+bus = &"Sfx"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_0fq84")
+bus = &"Sfx"

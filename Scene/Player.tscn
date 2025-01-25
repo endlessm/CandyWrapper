@@ -91,6 +91,7 @@ shape = SubResource("2")
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3")
+bus = &"Sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
