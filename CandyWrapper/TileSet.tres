@@ -1,8 +1,6 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://caem805hxljgn"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://caem805hxljgn"]
 
 [ext_resource type="Texture2D" uid="uid://btfn40n148ymy" path="res://Image/Tilemap.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://cboj002ecda55" path="res://Image/Player.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://cn5awui7bqekp" path="res://Image/Goober.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://d24wavdwab2qx" path="res://Image/Explosion.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://b17jmr687k1sm" path="res://Scene/Player.tscn" id="5_tc8rm"]
 [ext_resource type="PackedScene" uid="uid://byheefdx4lxmx" path="res://Scene/Goober.tscn" id="6_s0l86"]
@@ -30,18 +28,6 @@ texture_region_size = Vector2i(8, 8)
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvbjb"]
-texture = ExtResource("2")
-texture_region_size = Vector2i(8, 8)
-0:0/next_alternative_id = 8
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64w00"]
-texture = ExtResource("3")
-texture_region_size = Vector2i(8, 8)
-0:0/next_alternative_id = 8
-0:0/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye5km"]
 texture = ExtResource("4")
 margins = Vector2i(32, 0)
@@ -58,7 +44,5 @@ scenes/2/scene = ExtResource("6_s0l86")
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ltthb")
-sources/1 = SubResource("TileSetAtlasSource_kvbjb")
-sources/2 = SubResource("TileSetAtlasSource_64w00")
 sources/3 = SubResource("TileSetAtlasSource_ye5km")
 sources/4 = SubResource("TileSetScenesCollectionSource_odc7q")
