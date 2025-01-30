@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ay7olsehadk"]
+
+[ext_resource type="Theme" uid="uid://dqt6eyc0l8kms" path="res://Theme/WorldSelector.tres" id="1_gll88"]
+[ext_resource type="Script" path="res://Script/settingsSelector.gd" id="2_6mi7e"]
+
+[node name="SettingsSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gll88")
+script = ExtResource("2_6mi7e")
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Scroll/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroll/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 5
+
+[node name="ExtraWorldsBox" type="VBoxContainer" parent="Scroll/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 9
+text = "music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="sfxLabel" type="Label" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 9
+text = "sfx"
+horizontal_alignment = 1
+
+[node name="sfxSlider" type="HSlider" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="BackButton2" type="Button" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Go Back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="value_changed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/sfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="visibility_changed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/sfxSlider" to="." method="_on_sfx_slider_visibility_changed"]
+[connection signal="pressed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/BackButton2" to="." method="_on_back_button_2_pressed"]

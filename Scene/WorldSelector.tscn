@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://h6eyk0hg1y1f"]
+[gd_scene load_steps=7 format=3 uid="uid://h6eyk0hg1y1f"]
 
 [ext_resource type="Theme" uid="uid://dqt6eyc0l8kms" path="res://Theme/WorldSelector.tres" id="1_h1u7b"]
 [ext_resource type="Script" path="res://Script/WorldSelector.gd" id="2_c1jjg"]
 [ext_resource type="PackedScene" uid="uid://b1qffdabwqnxf" path="res://Scene/WorldSelector/ExtraWorldSelector.tscn" id="3_d8a1w"]
 [ext_resource type="PackedScene" uid="uid://pnnwgl5j385l" path="res://Scene/WorldSelector/MainWorldSelector.tscn" id="3_dc6jw"]
+[ext_resource type="PackedScene" uid="uid://d2ay7olsehadk" path="res://Scene/WorldSelector/SettingsSelector.tscn" id="5_opwul"]
+[ext_resource type="PackedScene" uid="uid://dd2etpxycu45k" path="res://Scene/WorldSelector/AudioSelector.tscn" id="6_5055g"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -22,7 +24,16 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="SettingsSelector" parent="." instance=ExtResource("5_opwul")]
+visible = false
+layout_mode = 1
+
+[node name="AudioSelector" parent="." instance=ExtResource("6_5055g")]
+visible = false
+layout_mode = 1
+
 [connection signal="main_world_selected" from="MainWorldSelector" to="." method="_on_main_world_selected"]
+[connection signal="settings_selected" from="MainWorldSelector" to="." method="_on_main_world_selector_settings_selected"]
 [connection signal="show_extra_worlds" from="MainWorldSelector" to="." method="_on_extra_worlds_button_pressed"]
-[connection signal="back" from="ExtraWorldSelector" to="." method="_on_back_button_pressed"]
-[connection signal="world_selected" from="ExtraWorldSelector" to="." method="_enter_world"]
+[connection signal="back" from="SettingsSelector" to="." method="_on_settings_selector_back"]
+[connection signal="audioback" from="AudioSelector" to="." method="_on_audio_selector_audioback"]

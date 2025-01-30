@@ -46,6 +46,11 @@ text = "Play Candy Wrapper"
 layout_mode = 2
 text = "Extra Worlds"
 
+[node name="Settings" type="Button" parent="VBox/MarginContainer2/MainWorldBox"]
+layout_mode = 2
+text = "Settings"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBox/MarginContainer2/MainWorldBox/CandyWrapperButton" to="." method="_on_candy_wrapper_button_pressed"]
 [connection signal="pressed" from="VBox/MarginContainer2/MainWorldBox/ExtraWorldsButton" to="." method="_on_extra_worlds_button_pressed"]
+[connection signal="pressed" from="VBox/MarginContainer2/MainWorldBox/Settings" to="." method="_on_settings_button_pressed"]

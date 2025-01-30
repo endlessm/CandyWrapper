@@ -1,15 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1qffdabwqnxf"]
+[gd_scene load_steps=3 format=3 uid="uid://dd2etpxycu45k"]
 
-[ext_resource type="Theme" uid="uid://dqt6eyc0l8kms" path="res://Theme/WorldSelector.tres" id="1_kkuy1"]
+[ext_resource type="Theme" uid="uid://dqt6eyc0l8kms" path="res://Theme/WorldSelector.tres" id="1_g102o"]
+[ext_resource type="Script" path="res://Script/audioSelector.gd" id="2_6bch5"]
 
-[node name="SettingsSelector" type="Control"]
+[node name="AudioSelector" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_kkuy1")
+theme = ExtResource("1_g102o")
+script = ExtResource("2_6bch5")
 
 [node name="Scroll" type="ScrollContainer" parent="."]
 unique_name_in_owner = true
@@ -32,8 +34,7 @@ size_flags_vertical = 3
 [node name="Title" type="Label" parent="Scroll/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Extra 
-Worlds"
+text = "Audio"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Scroll/VBoxContainer"]
@@ -49,10 +50,16 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="BackButton" type="Button" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+[node name="HSlider" type="HSlider" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="audioBackButton" type="Button" parent="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Go Back"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Scroll/VBoxContainer/MarginContainer/ExtraWorldsBox/audioBackButton" to="." method="_on_audio_back_button_pressed"]
